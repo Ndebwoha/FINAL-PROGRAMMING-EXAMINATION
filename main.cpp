@@ -1,18 +1,36 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main() {
-    int grade;
-    do {
-        cout << "Enter the grade scored in the class (0-100): ";
-        cin >> grade;
+    double moneyLoaded, totalCost, balance, remainingBalance;
+    int waterUnits;
 
-        if (grade < 0 || grade > 100) {
-            cout << "Invalid grade. Please enter a grade between 0 and 100." << endl;
-        }
-    } while (grade < 0 || grade > 100);
+    cout << "Enter the amount of money loaded onto the account (in UGX): ";
+    cin >> moneyLoaded;
 
-    cout << "Valid grade entered: " << grade << endl;
+    cout << "Enter the number of water units consumed: ";
+    cin >> waterUnits;
+
+    if (waterUnits <= 10) {
+        totalCost = waterUnits * 150;
+    } else if (waterUnits <= 20) {
+        totalCost = 10 * 150 + (waterUnits - 10) * 175;
+    } else {
+        totalCost = 10 * 150 + 10 * 175 + (waterUnits - 20) * 200;
+    }
+
+
+    totalCost *= 1.15; // Applying a 15% surcharge
+
+    if (moneyLoaded >= totalCost) {
+        balance = moneyLoaded - totalCost;
+        cout << fixed << setprecision(2);
+        cout << "Transaction Successful. Remaining Balance: " << balance << " UGX" << endl;
+    } else {
+        remainingBalance = totalCost - moneyLoaded;
+        cout << "Insufficient balance. Remaining Balance before usage: " << remainingBalance << " UGX" << endl;
+    }
 
     return 0;
 }
