@@ -1,18 +1,21 @@
 #include <iostream>
 using namespace std;
 
+int findThirdAngle(int angle1, int angle2) {
+
+    return 180 - angle1 - angle2;
+}
+
 int main() {
-    float sum = 0.0;
+    int angle1, angle2;
+    cout << "Enter the first angle of the triangle: ";
+    cin >> angle1;
+    cout << "Enter the second angle of the triangle: ";
+    cin >> angle2;
 
-    for (int i = 1; i <= 95; i += 2) {
-        sum += static_cast<float>(i) / (i + 2);
-        cout << i << "/" << i + 2 << endl;
-        if(i < 95) {
-            cout << "+\n";
-        }
-    }
-
-    cout << "The sum of the series is: " << sum << endl;
+    int thirdAngle = findThirdAngle(angle1, angle2);
+    std::cout << "The third angle of the triangle is: " << thirdAngle << " degrees" << std::endl;
 
     return 0;
 }
+
